@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+
+  php:
+    #image: php:7.4-apache
+    build:
+      dockerfile: Dockerfile
+    container_name: php74
+    volumes:
+      - .:/var/www/html
+    ports:
+      - 8080:80
+
+  db:
+    image: mysql:5.7
+    container_name: mysql57
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: ghjkjkuiiojhjfizbnioniozhmkjfopz
+      MYSQL_DATABASE: cefiidev1500
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - mysqldata:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: ghjkjkuiiojhjfizbnioniozhmkjfopz
+    ports:
+      - 8081:80
+
+  web:
+    image: httpd:2.4
+    container_name: web24
+
+
+
+volumes:
+    mysqldata:
+
+
+
+# networks:
+#     mysql-php:
+#         name: mysql-php
+#         # use the bridge driver
+#         driver: bridge
+#     web-php:
+#         name: web-php
+#         # use the bridge driver
+#         driver: bridge 

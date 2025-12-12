@@ -10,10 +10,11 @@ class DbConnect
     protected $connection;
     protected $request;
 
-    const SERVER = 'localhost';
-    const USER = 'root';
-    const PASSWORD = '';
-    const BASE = 'coursportfolio';
+    const SERVER = 'db';
+    const PORT = '3306';
+    const BASE = 'cefiidev1500';
+    const USER = 'user';
+    const PASSWORD = 'password';
 
     public function __construct()
     {
